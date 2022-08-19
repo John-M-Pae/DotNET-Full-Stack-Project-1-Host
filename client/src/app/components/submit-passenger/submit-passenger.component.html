@@ -1,0 +1,46 @@
+<div class="container">
+    <h2>Add New Passenger::</h2>
+    <form [formGroup]="newPassengerForm" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" formControlName="firstName" id="firstName" class="form-control">
+            <div *ngIf="formControls['firstName'].touched && formControls['firstName'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['firstName'].errors && formControls['firstName'].errors['required']">
+                    First name of passenger is required.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">last Name:</label>
+            <input type="text" formControlName="lastName" id="lastName" class="form-control">
+            <div *ngIf="formControls['lastName'].touched && formControls['lastName'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['lastName'].errors && formControls['lastName'].errors['required']">
+                    Last name of passenger is required.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" formControlName="age" id="age" class="form-control">
+            <div *ngIf="formControls['age'].touched && formControls['age'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['age'].errors && formControls['age'].errors['required']">
+                    A passenger must have a valid age.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" formControlName="email" id="email" class="form-control">
+            <div *ngIf="formControls['email'].touched && formControls['email'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['email'].errors && formControls['email'].errors['required']">
+                    An email address is required to confirm regestration with passenger.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="job">Job:</label>
+            <input type="text" formControlName="job" id="job" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!newPassengerForm.valid">Submit new passenger</button>
+    </form>
+</div>

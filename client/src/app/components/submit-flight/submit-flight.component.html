@@ -1,0 +1,51 @@
+<div class="container">
+    <h2>Add New Flight Plan::</h2>
+    <form [formGroup]="newFlightForm" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="departureTime">Departure Time</label>
+            <input type="datetime-local" formControlName="departureTime" id="departureTime" class="form-control">
+            <div *ngIf="formControls['departureTime'].touched && formControls['departureTime'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['departureTime'].errors && formControls['departureTime'].errors['required']">
+                    Flight requires a departure date / time.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="departureAirport">Departure Airport</label>
+            <input type="text" formControlName="departureAirport" id="departureAirport" class="form-control">
+            <div *ngIf="formControls['departureAirport'].touched && formControls['departureAirport'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['departureAirport'].errors && formControls['departureAirport'].errors['required']">
+                    Flight must be assigned an airport to depart from.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="arrivalTime">Arrival Time</label>
+            <input type="datetime-local" formControlName="arrivalTime" id="arrivalTime" class="form-control">
+            <div *ngIf="formControls['arrivalTime'].touched && formControls['arrivalTime'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['arrivalTime'].errors && formControls['arrivalTime'].errors['required']">
+                    Flight requires an arrival date / time.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="arrivalAirport">Departure Airport</label>
+            <input type="text" formControlName="arrivalAirport" id="arrivalAirport" class="form-control">
+            <div *ngIf="formControls['arrivalAirport'].touched && formControls['arrivalAirport'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['arrivalAirport'].errors && formControls['arrivalAirport'].errors['required']">
+                    Flight must be assigned an airport at which to arrive.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="maxCapacity">Maximum Passenger Capacity</label>
+            <input type="number" formControlName="maxCapacity" id="maxCapacity" class="form-control">
+            <div *ngIf="formControls['maxCapacity'].touched && formControls['maxCapacity'].invalid" class="alert alert-danger">
+                <div *ngIf="formControls['maxCapacity'].errors && formControls['maxCapacity'].errors['required']">
+                    Flight must be designated a maximum occupancy.
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!newFlightForm.valid">Submit new flight plan</button>
+    </form>
+</div>

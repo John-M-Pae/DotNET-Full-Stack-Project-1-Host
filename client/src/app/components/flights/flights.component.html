@@ -1,0 +1,47 @@
+<div>
+    <h2>Flights::</h2>
+    <button type="button" (click)="getAllFlights()">fetch flights</button>
+    <div>
+        <ul>
+            <li *ngFor="let flgt of flights">
+                <button type="button" (click)="focusOn(flgt)">
+                    <span>{{flgt.id}} :: From: {{flgt.departureAirport}} To: {{flgt.arrivalAirport}} </span>
+                </button>
+                <div *ngIf="selected === flgt">
+                    <button type="button">Delete flight</button>
+                    <a [routerLink]="['edit']" [queryParams]="{flgtId: flgt.id}">Edit info</a>
+                    <p>Details::</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Flight ID</th>
+                                <th>Date & Time of Departure</th>
+                                <th>Departure Airport</th>
+                                <th>Date & Time of Arrival</th>
+                                <th>Arrival Airport</th>
+                                <th>Current Passengers</th>
+                                <th>Maximum Occupancy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{flgt.id}}</td>
+                                <td>{{flgt.departureTime}}</td>
+                                <td>{{flgt.departureAirport}}</td>
+                                <td>{{flgt.arrivalTime}}</td>
+                                <td>{{flgt.arrivalAirport}}</td>
+                                <td>{{flgt.passengersBooked}}</td>
+                                <td>{{flgt.maxCapacity}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<button type="button" (click)="addNew()">Add New Flight</button>
+<div *ngIf="newView">
+    <app-submit-flight></app-submit-flight>
+</div>
